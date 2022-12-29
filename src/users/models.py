@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 
 class UserInfo(models.Model):
-    user = models.OneToOneField(auth_models.User, related_name='info')
+    user = models.OneToOneField(auth_models.User, related_name='info', on_delete=models.CASCADE)
 
     open_locality = models.PositiveIntegerField(
         help_text='На сколько клеток открывается область вокруг решённой задачи',

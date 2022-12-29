@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.conf.urls import include
+from django.urls import include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^users/', include('users.urls', namespace='users')),
-    url(r'^monitor/', include('monitor.urls', namespace='monitor')),
-    url(r'^', include('map.urls', namespace='map')),
+    url(r'^users/', include(('users.urls', 'users'), namespace='users')),
+    url(r'^monitor/', include(('monitor.urls', 'monitor'), namespace='monitor')),
+    url(r'^', include(('map.urls', 'map'), namespace='map')),
 ]
