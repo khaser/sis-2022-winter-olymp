@@ -137,9 +137,9 @@ class TileStatusEnum(djchoices.DjangoChoices):
 
 
 class TileStatus(models.Model):
-    tile = models.ForeignKey(AbstractTile, related_name='statuses', on_delete=models.CASCADE)
+    tile = models.ForeignKey(AbstractTile, related_name='statuses')
 
-    user = models.ForeignKey(auth_models.User, related_name='tiles_statuses', on_delete=models.CASCADE)
+    user = models.ForeignKey(auth_models.User, related_name='tiles_statuses')
 
     status = models.PositiveIntegerField(
         choices=TileStatusEnum.choices,
@@ -159,9 +159,9 @@ class TileStatus(models.Model):
 
 
 class RetrievedBonus(models.Model):
-    user = models.ForeignKey(auth_models.User, related_name='bonuses', on_delete=models.CASCADE)
+    user = models.ForeignKey(auth_models.User, related_name='bonuses')
 
-    bonus = models.ForeignKey(AbstractBonus, related_name='retrieved', on_delete=models.CASCADE)
+    bonus = models.ForeignKey(AbstractBonus, related_name='retrieved')
 
     used = models.BooleanField(default=False, help_text='Использован ли бонус командой')
 
