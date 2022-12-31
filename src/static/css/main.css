@@ -175,7 +175,7 @@ button:active {
     text-align: center;
     padding: 27px 0 0;
     font-size: 30px;
-    color: #666;
+    color: #f5d953;
 }
 
 .tiles-row .tile.empty {
@@ -197,24 +197,33 @@ button:active {
     pointer-events: none;
 }
 
-.tiles-row .tile.problem.status-1,
-.tiles-row .tile.problem.status-2 {
-	background-image: url('../images/problem.png');
-    color: #363f6b;
-}
+/* .tiles-row .tile.problem.status-1, */
+/* .tiles-row .tile.problem.status-2 { */
+/* 	background-image: url('../images/problem.png'); */
+/*     /1* color: #363f6b; *1/ */
+/* } */
 
-.tiles-row .tile.problem.status-1:hover,
-.tiles-row .tile.problem.status-2:hover {
-	background-image: url('../images/problem_hover.png');
-    color: #666f9b;
-}
+/* .tiles-row .tile.problem.status-1:hover, */
+/* .tiles-row .tile.problem.status-2:hover { */
+/* 	background-image: url('../images/problem_hover.png'); */
+/*     /1* color: #666f9b; *1/ */
+/* } */
 
-.tiles-row .tile.problem.status-0       { background-image: url('../images/closed.png'); }
-.tiles-row .tile.problem.status-3       { background-image: url('../images/tried.png'); }
-.tiles-row .tile.problem.status-3:hover { background-image: url('../images/tried_hover.png'); }
-.tiles-row .tile.problem.status-4       { background-image: url('../images/solved.png'); color: #356a58; }
-.tiles-row .tile.problem.status-4:hover { background-image: url('../images/solved_hover.png'); color: #659a88; }
+/* .tiles-row .tile.problem.status-0       { background-image: url('../images/closed.png'); } */
+/* .tiles-row .tile.problem.status-3       { background-image: url('../images/tried.png'); } */
+/* .tiles-row .tile.problem.status-4       { background-image: url('../images/solved.png'); color: #356a58; } */
+/* .tiles-row .tile.problem.status-4:hover { background-image: url('../images/solved_hover.png'); color: #659a88; } */
 
+.tiles-row .tile.problem.status-0.terrain-0 { background-image: url('../images/water.png'); }
+.tiles-row .tile.problem.status-0.terrain-1 { background-image: url('../images/ground.png'); }
+.tiles-row .tile.problem.status-1.terrain-0 { background-image: url('../images/water.png'); }
+.tiles-row .tile.problem.status-1.terrain-1 { background-image: url('../images/ground.png'); }
+.tiles-row .tile.problem.status-2.terrain-0 { background-image: url('../images/water.png'); }
+.tiles-row .tile.problem.status-2.terrain-1 { background-image: url('../images/ground.png'); }
+.tiles-row .tile.problem.status-3.terrain-0 { background-image: url('../images/water.png'); }
+.tiles-row .tile.problem.status-3.terrain-1 { background-image: url('../images/ground.png'); }
+.tiles-row .tile.problem.status-4.terrain-0 { background-image: url('../images/water_done.png'); }
+.tiles-row .tile.problem.status-4.terrain-1 { background-image: url('../images/ground_done.png'); }
 
 .monitor table td,
 .monitor table th {
