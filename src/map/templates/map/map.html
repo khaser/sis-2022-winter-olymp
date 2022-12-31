@@ -22,7 +22,9 @@
                         {% if tile == None %}
                             --><div class="tile empty">&nbsp;</div><!--
                         {% else %}
-                            --><div class="tile problem status-{{ tile.status }} terrain-{{ tile.terrain }}" data-id="{{ tile.id }}" data-read-url="{% url 'map:tile' tile.id %}" title="{{ tile.html_title }}" alt="{{ tile.html_title }}">{{ tile.solved_award }}</div><!--
+                            --><div class="tile problem status-{{ tile.status }} terrain-{{ tile.terrain }}" data-id="{{ tile.id }}" data-read-url="{% url 'map:tile' tile.id %}" title="{{ tile.html_title }}" alt="{{ tile.html_title }}">
+                                    {{ tile.solved_award }}
+                            </div><!--
                         {% endif %}
                     {% endfor %}
                 --></div>
