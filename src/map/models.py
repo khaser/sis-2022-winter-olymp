@@ -47,9 +47,10 @@ class AbstractTile(polymorphic.models.PolymorphicModel):
         return self._add_status(user, TileStatusEnum.READ)
 
     def mark_as_tried_by_user(self, user):
-        if TileStatus.get_tile_status(self, user) == TileStatusEnum.CLOSED:
-            return
-        return self._add_status(user, TileStatusEnum.TRIED)
+        return
+        # if TileStatus.get_tile_status(self, user) == TileStatusEnum.CLOSED:
+        #     return
+        # return self._add_status(user, TileStatusEnum.TRIED)
 
     def mark_as_solved_by_user(self, user):
         if TileStatus.get_tile_status(self, user) == TileStatusEnum.CLOSED:

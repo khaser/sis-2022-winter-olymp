@@ -22,7 +22,7 @@
                         {% if tile == None %}
                             --><div class="tile empty">&nbsp;</div><!--
                         {% else %}
-                            --><div class="tile problem status-{{ tile.status }}" data-id="{{ tile.id }}" data-read-url="{% url 'map:tile' tile.id %}" title="{{ tile.html_title }}" alt="{{ tile.html_title }}">{{ tile.ejudge_short_name }}</div><!--
+                            --><div class="tile problem status-{{ tile.status }}" data-id="{{ tile.id }}" data-read-url="{% url 'map:tile' tile.id %}" title="{{ tile.html_title }}" alt="{{ tile.html_title }}">{{ Problem(tile).solved_award }}</div><!--
                         {% endif %}
                     {% endfor %}
                 --></div>
@@ -46,18 +46,12 @@
                 Как только вы решаете какую-нибудь задачу, для вас открываются все её&nbsp;соседи.
             </p>
             <p>
-                Чтобы решить задачу, отправьте файл с решением или ответ в&nbsp;<a href="/cgi-bin/new-client?contest_id=134" target="_blank">контест в&nbsp;еджадже</a>,
+                Чтобы решить задачу, отправьте файл с решением или ответ в&nbsp;<a href="ejudge.lksh.ru/cgi-bin/new-client?contest_id=43998" target="_blank">контест в&nbsp;еджадже</a>,
                 после чего обновите эту страницу.
             </p>
             <p>
                 За&nbsp;правильное решение большинства задач вы получите очки.
-                Выигрывает команда, набравшая наибольшее количество очков. Будьте аккуратны:
-                за&nbsp;неправильные попытки очки вычитаются! Правда, за&nbsp;правильное решение вы&nbsp;никогда
-                не&nbsp;получите меньше 30% от&nbsp;исходной стоимости задачи.
-            </p>
-            <p>
-                Если у вас открыто мало задач, не&nbsp;беспокойтесь: через некоторое время каждая задача
-                открывается автоматически.
+                Выигрывает команда, набравшая наибольшее количество очков. 
             </p>
         </div>
         <div class="sidebar__loading">

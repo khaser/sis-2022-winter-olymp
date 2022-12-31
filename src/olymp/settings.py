@@ -139,12 +139,12 @@ else:
         raise Exception('Problems statements (settings.PROBLEMS_STATEMENTS_DIR) exists but is not a directory')
 
 
-EJUDGE_CONTEST_ID = 25801
+EJUDGE_CONTEST_ID = 43998
 EJUDGE_SERVE_CFG = os.path.join(BASE_DIR, '..', 'serve.cfg')
 # EJUDGE_SERVE_CFG = '/home/judges/%06d/conf/serve.cfg' % EJUDGE_CONTEST_ID
 EJUDGE_SERVE_CFG_ENCODING = 'utf-8'
 
-CONTEST_START_TIME = datetime.datetime(2016, 12, 31, 13, 0, 0)
+CONTEST_START_TIME = datetime.datetime(2022, 12, 31, 2, 00, 0)
 CONTEST_DURATION = 240
 
 MAXIMUM_PENALTY = 0.7
