@@ -9,6 +9,10 @@ import djchoices
 import polymorphic.models
 from relativefilepathfield.fields import RelativeFilePathField
 
+class Terrain(djchoices.DjangoChoices):
+    WATER = djchoices.ChoiceItem(0, 'Water')
+    GROUND = djchoices.ChoiceItem(1, 'Ground')
+
 
 class AbstractTile(polymorphic.models.PolymorphicModel):
     row = models.PositiveIntegerField(help_text='Номер строки')
@@ -16,6 +20,12 @@ class AbstractTile(polymorphic.models.PolymorphicModel):
     column = models.PositiveIntegerField(help_text='Номер колонки')
 
     ejudge_short_name = models.CharField(db_index=True, max_length=255)
+
+    terrain = models.PositiveIntegerField(
+        choices=Terrain.choices,
+        validators=[Terrain.validator],
+        db_index=True
+    )
 
     name = models.CharField(max_length=255)
 
@@ -47,10 +57,9 @@ class AbstractTile(polymorphic.models.PolymorphicModel):
         return self._add_status(user, TileStatusEnum.READ)
 
     def mark_as_tried_by_user(self, user):
-        return
-        # if TileStatus.get_tile_status(self, user) == TileStatusEnum.CLOSED:
-        #     return
-        # return self._add_status(user, TileStatusEnum.TRIED)
+        if TileStatus.get_tile_status(self, user) == TileStatusEnum.CLOSED:
+            return
+        return self._add_status(user, TileStatusEnum.TRIED)
 
     def mark_as_solved_by_user(self, user):
         if TileStatus.get_tile_status(self, user) == TileStatusEnum.CLOSED:
@@ -128,7 +137,6 @@ class CallMasterBonus(AbstractBonus):
 class OpenWideLocalityBonus(AbstractBonus):
     pass
 
-
 class TileStatusEnum(djchoices.DjangoChoices):
     CLOSED = djchoices.ChoiceItem(0, 'Closed')
     OPENED = djchoices.ChoiceItem(1, 'Opened')
@@ -157,8 +165,7 @@ class TileStatus(models.Model):
         if qs.exists():
             return qs.aggregate(models.Max('status'))['status__max']
         return TileStatusEnum.CLOSED
-
-
+    
 class RetrievedBonus(models.Model):
     user = models.ForeignKey(auth_models.User, related_name='bonuses')
 

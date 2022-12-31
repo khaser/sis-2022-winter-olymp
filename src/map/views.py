@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404
 
 from ejudge.database import EjudgeDatabase, RunStatus
 from ejudge.models import Contest
-from map.models import AbstractTile, TileStatusEnum
+from map.models import AbstractTile, TileStatusEnum, Problem
 from monitor.views import MonitorBuilder
 from . import models
 
@@ -16,7 +16,7 @@ from . import models
 def index(request):
     update_tile_statuses(request.user)
 
-    tiles = models.AbstractTile.objects.all()
+    tiles = models.Problem.objects.all()
 
     tile_statuses = get_tile_statuses(request.user, tiles)
 
