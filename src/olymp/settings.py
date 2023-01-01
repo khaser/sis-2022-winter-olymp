@@ -14,7 +14,7 @@ SECRET_KEY = '=s2^n#we8blg(92#$sf9et%wtg!ikx2kod0(-$$3@!_(ab1s&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '2022.wolymp.lksh.ru' ]
+ALLOWED_HOSTS = [ '2022.wolymp.lksh.ru', 'localhost' ]
 
 
 # Application definition
@@ -144,8 +144,8 @@ EJUDGE_SERVE_CFG = os.path.join(BASE_DIR, '..', 'serve.cfg')
 # EJUDGE_SERVE_CFG = '/home/judges/%06d/conf/serve.cfg' % EJUDGE_CONTEST_ID
 EJUDGE_SERVE_CFG_ENCODING = 'utf-8'
 
-CONTEST_START_TIME = datetime.datetime(2022, 12, 31, 2, 00, 0)
-CONTEST_DURATION = 240
+CONTEST_START_TIME = datetime.datetime(2022, 12, 31, 15, 30, 0)
+CONTEST_DURATION = 600
 
 MAXIMUM_PENALTY = 0.7
 

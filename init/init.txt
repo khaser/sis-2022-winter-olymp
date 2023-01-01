@@ -1,5 +1,40 @@
-0 0 00 real 100 0 
-0 -1 01 smiley 300 40
-1 -1 02 time 500 40
--1 3 03 text 1200 80
--1 4 04 regex-moroz 2000 120
+6	8	BO	Ground	winter-olymp-wikipedia-quiz	10	1	0
+1	7	F	Ground	bosporus-of-cimmeria	80	1	10000
+1	4	BN	Ground	hamiltonian-path-120	50	1	10000
+2	5	G	Ground	fractal	50	1	10000
+2	4	E	Ground	saint-upsolving-day	40	1	10000
+2	3	C	Ground	distinct-dice	30	1	10000
+3	4	D	Ground	simple-clock	40	1	10000
+3	3	B	Ground	buying-gifts	20	1	10000
+3	2	A	Ground	reversed-input-newyear	20	1	10000
+3	1	H	Ground	chess	120	1	10000
+6	3	I	Ground	straight-array-kotlin	70	1	10000
+4	6	BH	Ground	winter-olymp-prikol	30	1	10000
+1	5	S	Ground	bigf-new-year	45	1	10000
+2	6	T	Ground	kecker	38	1	10000
+4	2	U	Water	newyear-tree	13	1	10000
+5	2	P	Water	new-year-present	31	1	10000
+4	3	X	Water	assembler-new-year	19	1	10000
+4	4	BE	Water	winter-olymp-9-irl	31	1	10000
+5	3	Q	Water	binary-divisibility-anagram	38	1	10000
+1	6	BB	Water	winter-olymp-4-irl	38	1	10000
+4	5	Y	Water	winter-olymp-1-irl	25	1	10000
+5	4	BC	Water	winter-olymp-7-irl	38	1	10000
+7	3	BF	Water	winter-olymp-10-irl	50	1	10000
+6	4	BD	Water	winter-olymp-8-irl	44	1	10000
+6	5	V	Ground	simple-clock	38	1	10000
+2	8	N	Water	nordic-square-joke	38	1	10000
+5	5	BA	Water	winter-olymp-3-irl	31	1	10000
+4	7	Z	Water	winter-olymp-2-irl	19	1	10000
+5	6	BG	Water	winter-olymp-12-irl	19	1	10000
+7	4	R	Ground	new-year-lcm-elephant	53	1	10000
+5	7	O	Ground	gorilla-and-archiver	15	1	0
+6	6	W	Ground	oeis-202200	30	1	10000
+6	7	L	Ground	winter-olymp-rebus-quiz	15	1	10000
+3	8	J	Ground	winter-olymp-maze-quiz	15	1	10000
+4	8	M	Ground	winter-olymp-most-names-quiz	10	1	0
+4	9	K	Ground	winter-olymp-summary-ages-quiz	10	1	0
+3	7	BM	Ground	dk-joke-x2x3	26	1	10000
+3	6	BI	Water	winter-olymp-5-irl	31	1	10000
+2	7	BK	Water	winter-olymp-11-irl	31	1	10000
+3	5	BJ	Water	winter-olymp-6-irl	25	1	10000

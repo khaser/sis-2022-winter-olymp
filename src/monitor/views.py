@@ -14,6 +14,7 @@ from map.models import AbstractTile, Problem
 
 class Monitor:
     def __init__(self, solved_problems, tries, scores, is_frozen):
+
         self.solved_problems = solved_problems
         self.tries = tries
         self.scores = scores
@@ -39,10 +40,7 @@ class MonitorBuilder:
         return monitor.scores[user.info.ejudge_user_id]
 
     def build(self, freeze_if_frozen=True):
-        time = datetime.datetime.now()
-        if freeze_if_frozen and self.contest.fog_time <= time < self.contest.unfog_time:
-            time = self.contest.fog_time
-        runs = self.ejudge_database.get_runs(time)
+        runs = self.ejudge_database.get_runs()
 
         monitor = self._build_monitor_by_runs(runs)
         if not freeze_if_frozen:
@@ -73,6 +71,7 @@ class MonitorBuilder:
                 penalty = tile.wrong_penalty * tries[(run.user_id, run.problem_id)]
                 penalty = min(penalty, int(settings.MAXIMUM_PENALTY * tile.solved_award))
                 scores[run.user_id] += tile.solved_award - penalty
+
         is_frozen = self.contest.fog_time <= datetime.datetime.now() < self.contest.unfog_time
         return Monitor(solved_problems, tries, scores, is_frozen)
 

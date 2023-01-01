@@ -42,8 +42,8 @@ class EjudgeDatabase:
             before_time = datetime.datetime.now()
         contest_id = settings.EJUDGE_CONTEST_ID
         cursor = self.connection.cursor()
-        cursor.execute('SELECT *, UNIX_TIMESTAMP(create_time) AS create_time_unix FROM runs WHERE contest_id = %s AND UNIX_TIMESTAMP(create_time) < %s',
-                       [contest_id, time.mktime(before_time.timetuple())])
+        cursor.execute('SELECT *, UNIX_TIMESTAMP(create_time) AS create_time_unix FROM runs WHERE contest_id = %s',
+                       [contest_id])
         return self._dict_fetchall(cursor, Run)
 
     def get_runs_by_user(self, user):
