@@ -12,10 +12,6 @@ def get_problem_name(polygon_shortname):
     return parsed['name']
 
 with open('init_script.py', 'w', encoding='utf-8') as output_file:
-    # print('from map.models import *', file=output_file)
-    print('def __init__():', file=output_file)
-    print('    AbstractTile.objects.all().delete()', file=output_file)
-    
     with open(INIT_FILE, 'r', encoding='utf-8') as init:
         for line in init:
             line = line.strip().split()
@@ -29,4 +25,4 @@ with open('init_script.py', 'w', encoding='utf-8') as output_file:
     
             parameters += ', solved_award=%d, wrong_penalty=%d' % (int(award), int(penalty))
     
-            print('    Problem(%s).save()' % parameters, file=output_file)
+            print('        Problem(%s).save()' % parameters, file=output_file)

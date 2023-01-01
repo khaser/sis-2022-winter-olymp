@@ -75,7 +75,6 @@ class Problem(AbstractTile):
     def __str__(self):
         return 'Problem %s at (%d, %d)' % (self.ejudge_short_name, self.row, self.column)
 
-
 class AbstractBonus(AbstractTile):
     def use_bonus(self, user, selected_tile_id):
         try:

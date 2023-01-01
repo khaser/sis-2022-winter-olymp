@@ -29,8 +29,8 @@ INSTALLED_APPS = [
 
     'ejudge',
     'users',
-    'map',
     'monitor',
+    'map.apps.MapConfig'
 ]
 
 MIDDLEWARE = [
