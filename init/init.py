@@ -15,7 +15,7 @@ with open('init_script.py', 'w', encoding='utf-8') as output_file:
     with open(INIT_FILE, 'r', encoding='utf-8') as init:
         for line in init:
             line = line.strip().split()
-            column, row, ejudge_name, terrain, polygon_shortname, award, penalty, open_time = line[:8]
+            row, column, ejudge_name, terrain, polygon_shortname, award, penalty, open_time = line[:8]
             terrain = 1 if (terrain == "Ground") else 0
             row = int(row)
             column = int(column)
