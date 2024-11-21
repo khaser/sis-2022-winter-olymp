@@ -9,7 +9,7 @@ COPY src/requirements.txt requirements.txt
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Prepare statements
-COPY --exclude=tests/* init /init
+COPY --exclude=init_script.py --exclude=init.txt --exclude=tests/* init /init
 WORKDIR /init
 RUN python3 build_statements.py
 
@@ -17,6 +17,7 @@ RUN python3 build_statements.py
 WORKDIR /web_app
 COPY src src/
 COPY serve.cfg .
+COPY init/init.txt /init/
 RUN python3 /init/init.py >> /web_app/src/map/apps.py && cp -r /init/files-russian /web_app/src/statements
 
 WORKDIR /web_app
