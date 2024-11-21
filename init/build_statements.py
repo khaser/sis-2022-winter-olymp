@@ -9,10 +9,11 @@ import logging
 import glob
 import json
 
-CONTEST_DIR = 'polygon-contest'
-BUILD_DIR = 'build'
+SCRIPT_DIR = os.path.dirname(__file__)
+CONTEST_DIR = os.path.join(SCRIPT_DIR, 'polygon-contest')
+BUILD_DIR = os.path.join(SCRIPT_DIR, 'build')
 LANGUAGE = 'russian'
-FILES_DIR = 'files-' + LANGUAGE
+FILES_DIR = os.path.join(SCRIPT_DIR, 'files-' + LANGUAGE)
 
 
 def time_limit_from_int(tl):
@@ -75,9 +76,9 @@ def main():
             sample_tex_str += '\\end{example}'
             print(sample_tex_str)
 
-            shutil.copy('template.tex', os.path.join(BUILD_DIR, 'compile.tex'))
-            shutil.copy('olymp.sty', os.path.join(BUILD_DIR, 'olymp.sty'))
-            with codecs.open('data.tex', 'r', 'utf-8') as data_file:
+            shutil.copy(os.path.join(SCRIPT_DIR, 'template.tex'), os.path.join(BUILD_DIR, 'compile.tex'))
+            shutil.copy(os.path.join(SCRIPT_DIR, 'olymp.sty'), os.path.join(BUILD_DIR, 'olymp.sty'))
+            with codecs.open(os.path.join(SCRIPT_DIR, 'data.tex'), 'r', 'utf-8') as data_file:
                 data = data_file.read()
 
 
