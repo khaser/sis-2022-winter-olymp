@@ -1,7 +1,7 @@
 FROM python:3.6-alpine
 ENV PYTHONUNBUFFERED 1
 
-RUN apk add --no-cache vim bash gcc musl-dev mariadb-connector-c-dev
+RUN apk add --no-cache gcc musl-dev mariadb-connector-c-dev
 COPY src/requirements.txt /
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
