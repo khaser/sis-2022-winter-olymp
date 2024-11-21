@@ -32,7 +32,7 @@ def build_with_text(text, replace_data, result, section='', problem_name=''):
     os.chdir(BUILD_DIR)
     logging.info('Compile problem %s' % problem_name)
     for _ in range(2):
-        subprocess.check_output(['pdflatex', '-quiet', 'compile.tex'])
+        subprocess.check_output(['pdflatex', 'compile.tex'])
     os.chdir(cwd)
 
     shutil.copy(os.path.join(BUILD_DIR, 'compile.pdf'), os.path.join(FILES_DIR, result))
@@ -64,18 +64,29 @@ def main():
             memory_limit = memory_limit_from_int(properties['memoryLimit'])
             input_format = properties['input']
             output_format = properties['output']
+            samples = properties['sampleTests']
 
-            # print('UPDATE problems SET description = "%s" WHERE id = %d;' % (legend, 14 + problem_counter))
+            sample_tex_str = '\\begin{example}'
+            for sample in samples:
+                sampleInputFile, sampleOutputFile = sample['inputFile'], sample['outputFile']
+                sample_tex_str += "\\exmpfile{%s}{%s}" % (sampleInputFile, sampleOutputFile)
+                shutil.copy(os.path.join(statement_dir, sampleInputFile), os.path.join(BUILD_DIR, sampleInputFile))
+                shutil.copy(os.path.join(statement_dir, sampleOutputFile), os.path.join(BUILD_DIR, sampleOutputFile))
+            sample_tex_str += '\\end{example}'
+            print(sample_tex_str)
 
             shutil.copy('template.tex', os.path.join(BUILD_DIR, 'compile.tex'))
             shutil.copy('olymp.sty', os.path.join(BUILD_DIR, 'olymp.sty'))
             with codecs.open('data.tex', 'r', 'utf-8') as data_file:
                 data = data_file.read()
 
-            data = data.replace('%NAME%', name).replace('%INPUT_FILE%', input_file).replace('%OUTPUT_FILE%', output_file).\
+
+            data = data.replace('%NAME%', name).replace('%INPUT_FILE%', input_file).\
+                        replace('%OUTPUT_FILE%', output_file).\
                         replace('%TIME_LIMIT%', time_limit).replace('%MEMORY_LIMIT%', memory_limit).\
                         replace('%PROBLEM_COUNTER%', str(problem_counter)).\
-                        replace('%STATEMENT_DIR%', os.path.join('..', statement_dir).replace('\\', '/') + '/')
+                        replace('%STATEMENT_DIR%', os.path.join('..', statement_dir).replace('\\', '/') + '/').\
+                        replace('%EXAMPLES%', sample_tex_str)
 
             problem_name = os.path.basename(problem_dir)
             build_with_text(data, legend + '\n\\InputFile\n' + input_format + '\n\\OutputFile\n' + output_format, problem_name + '.pdf', problem_name=problem_name)
