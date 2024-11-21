@@ -1,18 +1,23 @@
-FROM python:3.6-alpine
+# syntax=docker/dockerfile:1.7-labs
+FROM python:3.6-buster
 ENV PYTHONUNBUFFERED 1
 
-RUN apk add --no-cache gcc musl-dev mariadb-connector-c-dev
-COPY src/requirements.txt /
+RUN apt update -y && apt install -y gcc musl-dev libmariadb3 libmariadb-dev texlive-lang-cyrillic texlive-latex-extra
+
+# Install python deps
+COPY src/requirements.txt requirements.txt
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-ADD src/. /web_app/src
-ADD Dockerfile /web_app
-ADD serve.cfg /web_app
-WORKDIR web_app
+# Prepare statements
+COPY --exclude=tests/* init /init
+WORKDIR /init
+RUN python3 build_statements.py
 
-ADD init/init_script.py problems.py
-RUN cat problems.py >> src/map/apps.py && rm problems.py
+# Bring application & import contest setup
+WORKDIR /web_app
+COPY src src/
+COPY serve.cfg .
+RUN python3 /init/init.py >> /web_app/src/map/apps.py && cp -r /init/files-russian /web_app/src/statements
 
-COPY init/files-russian/ src/statements
-
+WORKDIR /web_app
 CMD ["python", "src/manage.py", "runserver", "0.0.0.0:5555"]
