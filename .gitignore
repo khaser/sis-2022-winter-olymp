@@ -104,3 +104,5 @@ ENV/
 
 .envrc
 .direnv
+serve.cfg
+init/init.txt
