@@ -106,3 +106,5 @@ ENV/
 .direnv
 serve.cfg
 init/init.txt
+*.env
+!example.env

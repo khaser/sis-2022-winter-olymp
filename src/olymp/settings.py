@@ -12,10 +12,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=s2^n#we8blg(92#$sf9et%wtg!ikx2kod0(-$$3@!_(ab1s&+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('PRODUCTION', True)
 
-ALLOWED_HOSTS = [ '2022.wolymp.lksh.ru', 'localhost' ]
-
+ALLOWED_HOSTS = [ 'localhost', '127.0.0.1' ]
+if 'HOSTNAME' in os.environ:
+    ALLOWED_HOSTS += os.environ['HOSTNAME']
 
 # Application definition
 
@@ -76,10 +77,10 @@ DATABASES = {
     'ejudge': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ejudge',
-        'USER': 'w2021-olymp',
-        'PASSWORD': 'w2021-olymp',
-        'HOST': '192.168.32.207',
-        'PORT': '3306',
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
 
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -138,14 +139,14 @@ else:
     if not os.path.isdir(PROBLEMS_STATEMENTS_DIR):
         raise Exception('Problems statements (settings.PROBLEMS_STATEMENTS_DIR) exists but is not a directory')
 
-
-EJUDGE_CONTEST_ID = 43998
+os.environ['HOSTNAME']
+EJUDGE_CONTEST_ID = 209012
 EJUDGE_SERVE_CFG = os.path.join(BASE_DIR, '..', 'serve.cfg')
 # EJUDGE_SERVE_CFG = '/home/judges/%06d/conf/serve.cfg' % EJUDGE_CONTEST_ID
 EJUDGE_SERVE_CFG_ENCODING = 'utf-8'
 
-CONTEST_START_TIME = datetime.datetime(2022, 12, 31, 15, 30, 0)
-CONTEST_DURATION = 600
+CONTEST_START_TIME = datetime.datetime(2024, 11, 21, 20, 50, 0) # see TIME_ZONE variable!!!
+CONTEST_DURATION = 300
 
 MAXIMUM_PENALTY = 0.7
 
