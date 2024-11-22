@@ -19,21 +19,28 @@
    контейнера. См. пример конфигурации в `example.env`.
 4. Задать конфигурацию поля в `init/init.txt`. Для осознания формата можно почитать `init.py`,
    генерирующий по данному файлу django объекты.
-   <details>
-   <summary>Пример конфигурации init.txt</summary>
-   ```
-1	1	A	Ground	3-2-1-partition	10	1	0
-1	2	B	Water	firework-time 	20	1	100000
-2	1	C	Ground	choose-01  	30	1	100000
-2	2	D	Water	mushrooms-collection	40	1	100000
-   ```
-   </details>
+    <details>
+      <summary>Пример конфигурации init.txt</summary>
+
+      ```
+    1	1	A	Ground	3-2-1-partition	10	1	0
+    1	2	B	Water	firework-time 	20	1	100000
+    2	1	C	Ground	choose-01  	30	1	100000
+    2	2	D	Water	mushrooms-collection	40	1	100000
+      ```
+
+    </details>
+
 5. Собрать докер контейнер через `docker build ./ -t gexes`
 6. Доставить образ на хост любым удобным способом. Порт приложения: 5555.
    Обратите внимание, что данный хост должен быть способен подключиться к БД ejudge.
-7. Запустить на хосте контейнер, не забыв передать файл с переменными окружения. Пример команды для запуска:
-   ```docker run -it --env-file example.env -p 80:5555 gexes
-   ```
+7. Запустить на хосте контейнер, не забыв передать файл с переменными окружения. 
+   Пример команды для запуска:
+
+
+```
+docker run -it --env-file example.env -p 80:5555 gexes
+```
 
 **Предупреждение: сервер внутри docker крутиться в debug mode, при ошибке пользователь увидит все "кишки" сайта**
 
