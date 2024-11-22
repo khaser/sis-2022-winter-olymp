@@ -59,6 +59,7 @@ def main():
 
             name = properties['name']
             legend = properties['legend']
+            notes = properties['notes']
             input_file = properties['inputFile']
             output_file = properties['outputFile']
             time_limit = time_limit_from_int(properties['timeLimit'])
@@ -67,6 +68,7 @@ def main():
             output_format = properties['output']
             samples = properties['sampleTests']
 
+            # shutil.copytree(statement_dir, BUILD_DIR, dirs_exist_ok=True)
             sample_tex_str = '\\begin{example}'
             for sample in samples:
                 sampleInputFile, sampleOutputFile = sample['inputFile'], sample['outputFile']
@@ -74,7 +76,6 @@ def main():
                 shutil.copy(os.path.join(statement_dir, sampleInputFile), os.path.join(BUILD_DIR, sampleInputFile))
                 shutil.copy(os.path.join(statement_dir, sampleOutputFile), os.path.join(BUILD_DIR, sampleOutputFile))
             sample_tex_str += '\\end{example}'
-            print(sample_tex_str)
 
             shutil.copy(os.path.join(SCRIPT_DIR, 'template.tex'), os.path.join(BUILD_DIR, 'compile.tex'))
             shutil.copy(os.path.join(SCRIPT_DIR, 'olymp.sty'), os.path.join(BUILD_DIR, 'olymp.sty'))
@@ -90,7 +91,12 @@ def main():
                         replace('%EXAMPLES%', sample_tex_str)
 
             problem_name = os.path.basename(problem_dir)
-            build_with_text(data, legend + '\n\\InputFile\n' + input_format + '\n\\OutputFile\n' + output_format, problem_name + '.pdf', problem_name=problem_name)
+
+            text = legend + '\n\\InputFile\n' + input_format + '\n\\OutputFile\n' + output_format
+            if notes:
+                text += '\n\\Notes\n' + notes
+
+            build_with_text(data, text, problem_name + '.pdf', problem_name=problem_name)
             # build_with_text(data, input_format, problem_name + '-input-format.pdf', problem_name=problem_name, section=r'\InputFile')
             # build_with_text(data, output_format, problem_name + '-output-format.pdf', problem_name=problem_name, section=r'\OutputFile')
 
