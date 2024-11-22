@@ -25,7 +25,6 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('row', models.PositiveIntegerField(help_text='Номер строки')),
                 ('column', models.PositiveIntegerField(help_text='Номер колонки')),
-                ('terrain', models.PositiveIntegerField(help_text='Тип поля')),
                 ('ejudge_short_name', models.CharField(db_index=True, max_length=255)),
                 ('name', models.CharField(max_length=255)),
                 ('statement_file_name', relativefilepathfield.fields.RelativeFilePathField(match='.*\\.pdf', path=settings.PROBLEMS_STATEMENTS_DIR)),

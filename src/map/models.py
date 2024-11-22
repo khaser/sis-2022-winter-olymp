@@ -9,23 +9,12 @@ import djchoices
 import polymorphic.models
 from relativefilepathfield.fields import RelativeFilePathField
 
-class Terrain(djchoices.DjangoChoices):
-    WATER = djchoices.ChoiceItem(0, 'Water')
-    GROUND = djchoices.ChoiceItem(1, 'Ground')
-
-
 class AbstractTile(polymorphic.models.PolymorphicModel):
     row = models.PositiveIntegerField(help_text='Номер строки')
 
     column = models.PositiveIntegerField(help_text='Номер колонки')
 
     ejudge_short_name = models.CharField(db_index=True, max_length=255)
-
-    terrain = models.PositiveIntegerField(
-        choices=Terrain.choices,
-        validators=[Terrain.validator],
-        db_index=True
-    )
 
     name = models.CharField(max_length=255)
 
@@ -164,7 +153,7 @@ class TileStatus(models.Model):
         if qs.exists():
             return qs.aggregate(models.Max('status'))['status__max']
         return TileStatusEnum.CLOSED
-    
+
 class RetrievedBonus(models.Model):
     user = models.ForeignKey(auth_models.User, related_name='bonuses')
 

@@ -5,4 +5,3 @@ class MapConfig(AppConfig):
     def ready(self):
         from map.models import AbstractTile, Problem
         AbstractTile.objects.all().delete()
-        

@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="login-form">
-        <h1>Добро пожаловать<br>на новогоднюю олимпиаду</h1>
+        <h1>Добро пожаловать<br>на игру "Последний день в Сириусе"</h1>
         <form action="{% url 'users:login' %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}

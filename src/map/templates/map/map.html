@@ -17,12 +17,12 @@
         </div>
         <div class="map__inner">
             {% for row in map %}
-                <div class="tiles-row {{ forloop.counter0|divisibleby:2|yesno:'even,odd' }}" style="top: -{% widthratio forloop.counter0 1 14 %}px"><!--
+                <div class="tiles-row {{ forloop.counter0|divisibleby:2|yesno:'even,odd' }}" style="top: -{% widthratio forloop.counter0 1 36 %}px"><!--
                     {% for tile in row %}
                         {% if tile == None %}
                             --><div class="tile empty">&nbsp;</div><!--
                         {% else %}
-                            --><div class="tile problem status-{{ tile.status }} terrain-{{ tile.terrain }}" data-id="{{ tile.id }}" data-read-url="{% url 'map:tile' tile.id %}" title="{{ tile.html_title }}" alt="{{ tile.html_title }}">
+                            --><div class="tile noselect problem status-{{ tile.status }}" data-id="{{ tile.id }}" data-read-url="{% url 'map:tile' tile.id %}" title="{{ tile.html_title }}" alt="{{ tile.html_title }}">
                                     {{ tile.solved_award }}
                             </div><!--
                         {% endif %}

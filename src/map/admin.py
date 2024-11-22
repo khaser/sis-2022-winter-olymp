@@ -5,7 +5,7 @@ from . import models
 
 class ProblemAdmin(admin.ModelAdmin):
     list_display = ('id', 'row', 'column', 'ejudge_short_name',
-                    'terrain', 'name', 'statement_file_name',
+                    'name', 'statement_file_name',
                     'solved_award', 'wrong_penalty', 'automatic_open_time'
                     )
 
@@ -15,7 +15,7 @@ admin.site.register(models.Problem, ProblemAdmin)
 
 class AbstractTailAdmin(admin.ModelAdmin):
     list_display = ('id', 'row', 'column', 'ejudge_short_name',
-                    'terrain', 'name', 'statement_file_name',
+                    'name', 'statement_file_name',
                     'automatic_open_time'
                     )
 

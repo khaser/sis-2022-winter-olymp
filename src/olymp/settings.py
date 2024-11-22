@@ -75,8 +75,8 @@ DATABASES = {
     'ejudge': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ejudge',
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'USER': os.environ.get('DB_USER', ''),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
         'HOST': "ejudge.letovo.ru",
         'PORT': os.environ.get('DB_PORT', '3306'),
     }
@@ -136,6 +136,10 @@ if not os.path.exists(PROBLEMS_STATEMENTS_DIR):
 else:
     if not os.path.isdir(PROBLEMS_STATEMENTS_DIR):
         raise Exception('Problems statements (settings.PROBLEMS_STATEMENTS_DIR) exists but is not a directory')
+
+# TODO: move to init/init.txt
+FIELD_WIDTH=12
+FIELD_HEIGHT=7
 
 EJUDGE_HOST="ejudge.letovo.ru"
 EJUDGE_CONTEST_ID = 209012

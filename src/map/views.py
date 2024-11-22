@@ -20,12 +20,13 @@ def index(request):
 
     tile_statuses = get_tile_statuses(request.user, tiles)
 
-    max_row = max((tile.row for tile in tiles), default=0)
+    max_row = settings.FIELD_HEIGHT
+    max_column = settings.FIELD_WIDTH
+
     map = []
     for row in range(max_row + 1):
         map.append([])
         tiles_on_row = list(filter(lambda t: t.row == row, tiles))
-        max_column = max((tile.column for tile in tiles_on_row), default=0)
         tiles_by_columns = {tile.column: tile for tile in tiles_on_row}
         for column in range(max_column + 1):
             if column in tiles_by_columns:
