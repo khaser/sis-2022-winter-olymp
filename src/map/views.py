@@ -46,6 +46,7 @@ def index(request):
     return render(request, 'map/map.html', {
         'map': map,
         'score': score,
+        'ejudge_link': f"https://{settings.EJUDGE_HOST}/cgi-bin/new-client?contest_id={settings.EJUDGE_CONTEST_ID}"
     })
 
 

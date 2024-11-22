@@ -14,9 +14,7 @@ SECRET_KEY = '=s2^n#we8blg(92#$sf9et%wtg!ikx2kod0(-$$3@!_(ab1s&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('PRODUCTION', True)
 
-ALLOWED_HOSTS = [ 'localhost', '127.0.0.1' ]
-if 'HOSTNAME' in os.environ:
-    ALLOWED_HOSTS += os.environ['HOSTNAME']
+ALLOWED_HOSTS = [ 'game.golodov.org', 'localhost', '127.0.0.1' ]
 
 # Application definition
 
@@ -79,7 +77,7 @@ DATABASES = {
         'NAME': 'ejudge',
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOST'],
+        'HOST': "ejudge.letovo.ru",
         'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
@@ -139,7 +137,7 @@ else:
     if not os.path.isdir(PROBLEMS_STATEMENTS_DIR):
         raise Exception('Problems statements (settings.PROBLEMS_STATEMENTS_DIR) exists but is not a directory')
 
-os.environ['HOSTNAME']
+EJUDGE_HOST="ejudge.letovo.ru"
 EJUDGE_CONTEST_ID = 209012
 EJUDGE_SERVE_CFG = os.path.join(BASE_DIR, '..', 'serve.cfg')
 # EJUDGE_SERVE_CFG = '/home/judges/%06d/conf/serve.cfg' % EJUDGE_CONTEST_ID
