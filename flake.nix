@@ -12,7 +12,7 @@
       pkgs = import nixpkgs { inherit system; };
       texliveEnv = with pkgs; texlive.combine {
         inherit (texlive)
-          scheme-small
+          scheme-medium
           pdftex
           collection-langenglish
           collection-langcyrillic

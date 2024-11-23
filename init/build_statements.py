@@ -33,7 +33,7 @@ def build_with_text(text, replace_data, result, section='', problem_name=''):
     os.chdir(BUILD_DIR)
     logging.info('Compile problem %s' % problem_name)
     for _ in range(2):
-        subprocess.check_output(['pdflatex', 'compile.tex'])
+        subprocess.check_output(['pdflatex', '--shell-escape', 'compile.tex'])
     os.chdir(cwd)
 
     shutil.copy(os.path.join(BUILD_DIR, 'compile.pdf'), os.path.join(FILES_DIR, result))

@@ -51,6 +51,7 @@ a {
     background-size: 80%;
     width: 1920px;
     background-position: 30px -10px;
+    overflow: hidden;
 }
 
 .body-content > .sidebar {
@@ -187,7 +188,7 @@ button:active {
 
 .tiles-row .tile.empty {
     cursor: default;
-    background-color: #e2dfd6;
+    background-color: #00000054;
 }
 
 .tiles-row .tile.problem.status-0 {
@@ -265,3 +266,4 @@ input[type="password"] {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
